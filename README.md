@@ -5,7 +5,7 @@ A versatile, fully-featured Collection implementation.
 ## Installation
 
 ```bash
-composer require galvao-eti/collection
+composer require galvao-eti/collection:0.1.0-alpha
 ```
 
 ## Features
