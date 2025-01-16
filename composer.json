@@ -3,13 +3,11 @@
     "type": "library",
     "license": "Apache-2.0",
     "description": "A Collection implementation that offers uncommon functionality",
-    "version": "0.1.0-dev",
     "autoload": {
         "psr-4": {
             "GalvaoEti\\Collection\\": "src/"
         }
     },
-    "minimum-stability": "dev",
     "autoload-dev": {
         "psr-4": {
             "GalvaoEti\\CollectionTest\\": "test/unit/"
