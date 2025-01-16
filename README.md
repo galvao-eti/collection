@@ -35,7 +35,7 @@ Example usage:
 
 require 'vendor/autoload.php';
 
-use GalvaoEti\Collection;
+use GalvaoEti\Collection\Collection;
 
 $collection = new Collection('string');
 $collection->add('foo');
