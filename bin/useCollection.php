@@ -27,3 +27,7 @@ try {
 } catch (Throwable $e) {
     exit($e->getMessage());
 }
+
+foreach ($c->generateData() as $item) {
+    echo $item . PHP_EOL;
+}
