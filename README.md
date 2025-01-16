@@ -10,19 +10,20 @@ TBD
 
 Features are marked when fully tested.
 
-[x] Strong Typed Collections:
-    [x] Mixed (Default)
-    [x] Integer
-    [x] Double
-    [x] Boolean
-    [x] Array
-    [x] Object
-    [x] Objects of a specific class
-[ ] Customizable overwriting prevention
-[ ] Locking the collection (no more writing to it)
-[ ] Deletion
-    [ ] With the possibility to automatically rearrange the collection's keys
-[ ] Update items
+Strongly Typed Collections:
+
+- [x] Mixed (Default)
+- [x] Integer
+- [x] Double
+- [x] Boolean
+- [x] Array
+- [x] Object
+- [x] Objects of a specific class
+- [ ] Customizable overwriting prevention
+- [ ] Locking the collection (no more writing to it)
+- [ ] Deletion
+- [ ] Automatically rearranging the collection's keys upon deletion
+- [ ] Update items
 
 ## License
 
