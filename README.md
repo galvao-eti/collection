@@ -5,7 +5,7 @@ A versatile, fully-featured Linear [Collection](https://en.wikipedia.org/wiki/Co
 ## Installation
 
 ```bash
-composer require galvao-eti/collection:0.2.0-alpha
+composer require galvao-eti/collection:0.3.0-alpha
 ```
 
 ## Features
