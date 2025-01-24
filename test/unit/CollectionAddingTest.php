@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace GalvaoEti\CollectionTest;
 
 use \InvalidArgumentException;
+use \TypeError;
 
 use PHPUnit\Framework\{
     Attributes\DataProviderExternal,
@@ -35,6 +36,7 @@ class CollectionAddingTest extends TestCase
     #[DataProviderExternal(ValidDataProvider::class, 'validArray')]
     #[DataProviderExternal(ValidDataProvider::class, 'validObject')]
     #[DataProviderExternal(ValidDataProvider::class, 'validClass')]
+
     public function testValidCollection(string $type, ?string $class, array $data)
     {
         $this->collection = new Collection($type, $class);
@@ -65,8 +67,5 @@ class CollectionAddingTest extends TestCase
         foreach ($data as $value) {
             $this->collection->add($value);
         }
-
-        $this->collection->prev();
-
     }
 }

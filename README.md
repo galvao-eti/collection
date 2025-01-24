@@ -1,6 +1,6 @@
 # GalvaoEti\Collection
 
-A versatile, fully-featured Collection implementation.
+A versatile, fully-featured Linear [Collection](https://en.wikipedia.org/wiki/Collection_\(abstract_data_type\)) implementation.
 
 ## Installation
 
@@ -10,7 +10,7 @@ composer require galvao-eti/collection:0.2.0-alpha
 
 ## Features
 
-Features are marked when fully tested.
+Features are considered present (ticked) when fully unit tested.
 
 Strongly Typed Collections:
 

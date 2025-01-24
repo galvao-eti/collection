@@ -2,7 +2,7 @@
 
 /**
  * GalvaoEti\Collection
- * A versatile, fully-featured Collection implementation.
+ * A versatile, fully-featured Linear Collection implementation.
  *
  * @author Er Galvão Abbott <galvao@php.net>
  * @version 0.1.0-dev
@@ -74,13 +74,17 @@ class Collection implements Abstraction\CollectionInterface
         }
     }
 
-    public function get(int $key): mixed
+    public function get(?int $key): mixed
     {
+        if ($key === null) {
+            return $this->data;
+        }
+
         if ($this->exists($key)) {
             return $this->data[$key];
         }
 
-        return null;
+        return [];
     }
 
     public function generateData()
