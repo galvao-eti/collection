@@ -4,13 +4,13 @@ declare(strict_types = 1);
 
 namespace GalvaoEti\CollectionTest;
 
-use \TypeError;
+use \ValueError;
 
 use PHPUnit\Framework\TestCase;
 
 use GalvaoEti\Collection\Collection;
 
-class InvalidTypeForConstructTesting extends TestCase
+class InvalidTypeForConstructTest extends TestCase
 {
     private ?Collection $collection = null;
 
@@ -19,9 +19,9 @@ class InvalidTypeForConstructTesting extends TestCase
         $this->collection = null;
     }
 
-    public function testConstructInvalidType(string $type, ?string $class, array $data)
+    public function testConstructInvalidType()
     {
-        $this->expectException(TypeError::class);
+        $this->expectException(ValueError::class);
         $this->collection = new Collection('foo');
     }
 }

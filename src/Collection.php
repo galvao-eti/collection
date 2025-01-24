@@ -18,7 +18,7 @@ namespace GalvaoEti\Collection;
 
 use \Exception;
 use \InvalidArgumentException;
-use \TypeError;
+use \ValueError;
 
 use GalvaoEti\Collection\Enumeration\Type;
 
@@ -39,7 +39,7 @@ class Collection implements Abstraction\CollectionInterface
 
         try {
             $this->dataType = Type::from($dataType);
-        } catch (TypeError $e) {
+        } catch (ValueError $e) {
             throw $e;
         }
 
