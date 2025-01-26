@@ -27,6 +27,15 @@ class Collection implements Abstraction\CollectionInterface
     private int $cursor = 0;
     private int $dataCount = 0;
 
+    public bool $locked = false;
+
+    /**
+     * allowOverwriting differs from locked in the sense that:
+     * - Adding and Deleting new items are still allowed
+     * - What is *not* allowed is adding to a position which is already occupied (see line 83) or updating items
+     */
+    public bool $allowOverwriting = false;
+
     private array $data = [];
     private Type $dataType = Type::Mixed;
     private ?string $dataClass = null;
@@ -46,29 +55,39 @@ class Collection implements Abstraction\CollectionInterface
         $this->dataClass = $dataClass;
     }
 
-    public function add(mixed $data, bool $lazy = true): void
+    public function validateTypes(mixed $data): bool
     {
-        $valid = true;
         $type = gettype($data);
 
         if (($this->dataType !== Type::Mixed and $type !== $this->dataType->value) or
-                ($type === 'object' and $this->dataClass !== null and !$data instanceof $this->dataClass)
-            ) {
-                    $valid = false;
+            ($type === 'object' and $this->dataClass !== null and !$data instanceof $this->dataClass)) {
+            return false;
         }
 
-        if (!$valid) {
-            throw new InvalidArgumentException('Data must be of type: ' . $this->dataType->value . ', ' . $type . ' given.');
+        return true;
+    }
+
+    public function add(mixed $data, bool $lazy = true): void
+    {
+        if ($this->locked) {
+            throw new Exception('Trying to add data to a locked collection.');
+        }
+
+        if (!$this->validateTypes($data)) {
+            throw new InvalidArgumentException(
+                'Data must be of type: ' . $this->dataType->value . ', ' . gettype($data) . ' given.'
+            );
         }
 
         // Ensures that data is not overwritten
-        if (!$this->exists($this->cursor)) {
+        if (!$this->exists($this->cursor) or $this->allowOverwriting) {
             $this->data[$this->cursor] = $data;
-            $this->dataCount++;
 
-            if ($lazy) {
+            if ($lazy and $this->cursor === $this->dataCount) {
                 $this->next();
             }
+
+            $this->dataCount++;
         } else {
             throw new Exception('A collection item already exists in position ' . $this->cursor);
         }
@@ -89,13 +108,27 @@ class Collection implements Abstraction\CollectionInterface
 
     public function generateData()
     {
-        for ($c = 0; $c < $this->dataCount; $c++) {
-            yield $this->data[$c];
+        foreach ($this->data as $data) {
+            yield $data;
         }
     }
 
     public function update(int $key, mixed $data, bool $silentOnNotFound = true): void
     {
+        if ($this->locked) {
+            throw new Exception('Trying to update data on a locked collection.');
+        }
+
+        if (!$this->allowOverwriting) {
+            throw new Exception('Trying to update data on a collection that is not overwritable.');
+        }
+
+        if (!$this->validateTypes($data)) {
+            throw new InvalidArgumentException(
+                'Data must be of type: ' . $this->dataType->value . ', ' . gettype($data) . ' given.'
+            );
+        }
+
         if (!$this->exists($key)) {
             if (!$silentOnNotFound) {
                 throw new \Exception($key . ' not found.');
@@ -107,9 +140,16 @@ class Collection implements Abstraction\CollectionInterface
 
     public function delete(int $key, bool $tidyUp = false, bool $silentOnNotFound = true): void
     {
+        if ($this->locked) {
+            throw new Exception('Trying to delete data from a locked collection.');
+        }
+
         if ($this->exists($key)) {
             unset($this->data[$key]);
-            $this->dataCount--;
+
+            if ($key === $this->cursor) {
+                $this->prev();
+            }
         } else if (!$silentOnNotFound) {
             throw new Exception($key . ' not found.');
         }
@@ -126,15 +166,13 @@ class Collection implements Abstraction\CollectionInterface
 
             ksort($this->data);
         }
+
+        $this->dataCount--;
     }
 
     public function exists(int $key): bool
     {
-        if (isset($this->data[$key])) {
-            return true;
-        }
-
-        return false;
+        return isset($this->data[$key]);
     }
 
     public function current(): mixed

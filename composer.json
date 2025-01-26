@@ -2,7 +2,7 @@
     "name": "galvao-eti/collection",
     "type": "library",
     "license": "Apache-2.0",
-    "description": "A versatile, fully-featured Collection implementation.",
+    "description": "A versatile, fully-featured Linear Collection implementation.",
     "autoload": {
         "psr-4": {
             "GalvaoEti\\Collection\\": "src/"

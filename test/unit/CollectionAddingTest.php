@@ -59,7 +59,7 @@ class CollectionAddingTest extends TestCase
     #[DataProviderExternal(InvalidDataProvider::class, 'invalidObject')]
     #[DataProviderExternal(InvalidDataProvider::class, 'invalidClass')]
 
-    public function testInvalidInvalidCollection(string $type, ?string $class, array $data)
+    public function testInvalidCollection(string $type, ?string $class, array $data)
     {
         $this->collection = new Collection($type, $class);
         $this->expectException(InvalidArgumentException::class);

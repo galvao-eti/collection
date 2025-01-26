@@ -22,6 +22,8 @@ try {
     echo $e->getMessage();
 }
 
+var_dump($c->get(null));
+
 try {
     $c->delete(1, true);
 } catch (Throwable $e) {
@@ -31,3 +33,6 @@ try {
 foreach ($c->generateData() as $item) {
     echo $item . PHP_EOL;
 }
+
+var_dump($c->get(null));
+echo $c->key();

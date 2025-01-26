@@ -5,7 +5,7 @@ A versatile, fully-featured Linear [Collection](https://en.wikipedia.org/wiki/Co
 ## Installation
 
 ```bash
-composer require galvao-eti/collection:0.3.0-alpha
+composer require galvao-eti/collection
 ```
 
 ## Features
@@ -21,11 +21,11 @@ Strongly Typed Collections:
 - [x] Array
 - [x] Object
 - [x] Objects of a specific class
-- [ ] Customizable overwriting prevention
-- [ ] Locking the collection (no more writing to it)
-- [ ] Deletion
-- [ ] Automatically rearranging the collection's keys upon deletion
-- [ ] Update items
+- [x] Overwriting prevention when adding data with existing key or updating
+- [x] Locking the collection (no more writing to it)
+- [x] Deletion
+- [x] Automatically rearranging the collection's keys upon deletion
+- [x] Update items
 
 ## Usage
 
