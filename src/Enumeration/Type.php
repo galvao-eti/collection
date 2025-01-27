@@ -2,10 +2,10 @@
 
 /**
  * GalvaoEti\Collection
- * A versatile, fully-featured Collection implementation.
+ * A versatile, fully-featured Linear Collection implementation.
  *
  * @author Er Galvão Abbott <galvao@php.net>
- * @version 0.1.0-dev
+ * @version 1.0.1
  * @license https://www.apache.org/licenses/LICENSE-2.0.html Apache 2.0
  *
  * @link https://github.com/galvao-eti/collection
