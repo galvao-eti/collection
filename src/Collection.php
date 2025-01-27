@@ -5,7 +5,7 @@
  * A versatile, fully-featured Linear Collection implementation.
  *
  * @author Er Galvão Abbott <galvao@php.net>
- * @version 0.1.0-dev
+ * @version 1.0.1
  * @license https://www.apache.org/licenses/LICENSE-2.0.html Apache 2.0
  *
  * @link https://github.com/galvao-eti/collection
@@ -31,7 +31,7 @@ class Collection implements Abstraction\CollectionInterface
 
     /**
      * allowOverwriting differs from locked in the sense that:
-     * - Adding and Deleting new items are still allowed
+     * - Adding and Deleting items is still allowed
      * - What is *not* allowed is adding to a position which is already occupied (see line 83) or updating items
      */
     public bool $allowOverwriting = false;
@@ -82,12 +82,12 @@ class Collection implements Abstraction\CollectionInterface
         // Ensures that data is not overwritten
         if (!$this->exists($this->cursor) or $this->allowOverwriting) {
             $this->data[$this->cursor] = $data;
+            $this->dataCount++;
 
-            if ($lazy and $this->cursor === $this->dataCount) {
+            if ($this->cursor === $this->dataCount - 1) {
                 $this->next();
             }
 
-            $this->dataCount++;
         } else {
             throw new Exception('A collection item already exists in position ' . $this->cursor);
         }
@@ -147,7 +147,7 @@ class Collection implements Abstraction\CollectionInterface
         if ($this->exists($key)) {
             unset($this->data[$key]);
 
-            if ($key === $this->cursor) {
+            if ($key === $this->dataCount - 1) {
                 $this->prev();
             }
         } else if (!$silentOnNotFound) {
