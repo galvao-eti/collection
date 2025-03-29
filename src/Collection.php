@@ -195,6 +195,18 @@ class Collection implements Abstraction\CollectionInterface
         --$this->cursor;
     }
 
+    public function first(): mixed
+    {
+        return $this->data[0];
+    }
+
+    public function last(): mixed
+    {
+        $index = $this->count() - 1;
+
+        return $this->data[$index];
+    }
+
     public function rewind(): void
     {
         $this->cursor = 0;
