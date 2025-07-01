@@ -22,7 +22,7 @@ chdir(__DIR__);
 
 require '../vendor/autoload.php';
 
-use GalvaoEti\Collection\Collection;
+use Collection\Collection;
 
 try {
     $c = new Collection('string');
