@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace GalvaoEti\CollectionTest;
+namespace CollectionTest;
 
 use \InvalidArgumentException;
 use \TypeError;
@@ -13,12 +13,12 @@ use PHPUnit\Framework\{
     TestCase
 };
 
-use GalvaoEti\CollectionTest\DataProvider\{
+use CollectionTest\DataProvider\{
     ValidDataProvider,
     InvalidDataProvider
 };
 
-use GalvaoEti\Collection\Collection;
+use Collection\Collection;
 
 class CollectionNotOverwritingTest extends TestCase
 {

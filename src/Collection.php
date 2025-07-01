@@ -1,7 +1,7 @@
 <?php
 
 /**
- * GalvaoEti\Collection
+ * Collection
  * A versatile, fully-featured Linear Collection implementation.
  *
  * @author Er Galvão Abbott <galvao@php.net>
@@ -14,13 +14,13 @@
 
 declare(strict_types = 1);
 
-namespace GalvaoEti\Collection;
+namespace Collection;
 
 use \Exception;
 use \InvalidArgumentException;
 use \ValueError;
 
-use GalvaoEti\Collection\Enumeration\Type;
+use Collection\Enumeration\Type;
 
 class Collection implements Abstraction\CollectionInterface
 {

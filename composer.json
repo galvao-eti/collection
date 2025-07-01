@@ -5,12 +5,12 @@
     "description": "A versatile, fully-featured Linear Collection implementation.",
     "autoload": {
         "psr-4": {
-            "GalvaoEti\\Collection\\": "src/"
+            "Collection\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "GalvaoEti\\CollectionTest\\": "test/unit/"
+            "CollectionTest\\": "test/unit/"
         }
     },
     "authors": [
