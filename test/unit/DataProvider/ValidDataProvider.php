@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace GalvaoEti\CollectionTest\DataProvider;
+namespace CollectionTest\DataProvider;
 
 use \stdClass;
 

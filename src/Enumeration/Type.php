@@ -1,7 +1,7 @@
 <?php
 
 /**
- * GalvaoEti\Collection
+ * Collection
  * A versatile, fully-featured Linear Collection implementation.
  *
  * @author Er Galvão Abbott <galvao@php.net>
@@ -14,7 +14,7 @@
 
 declare(strict_types = 1);
 
-namespace GalvaoEti\Collection\Enumeration;
+namespace Collection\Enumeration;
 
 enum Type: string {
     case Mixed = 'mixed';
