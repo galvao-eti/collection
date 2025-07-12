@@ -24,6 +24,8 @@ use Collection\Enumeration\Type;
 
 class Collection implements Abstraction\CollectionInterface
 {
+    public ?string $id = null;
+
     private int $cursor = 0;
     private int $dataCount = 0;
 
@@ -40,8 +42,12 @@ class Collection implements Abstraction\CollectionInterface
     private Type $dataType = Type::Mixed;
     private ?string $dataClass = null;
 
-    public function __construct(string $dataType = 'mixed', ?string $dataClass = null)
+    public function __construct(string $dataType = 'mixed', ?string $dataClass = null, ?string $id = null)
     {
+        if ($id !== null) {
+            $this->id = $id;
+        }
+
         if ($dataType === 'bool') {
             $dataType = 'boolean';
         }
