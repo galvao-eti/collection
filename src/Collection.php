@@ -81,7 +81,11 @@ class Collection implements Abstraction\CollectionInterface
 
         if (!$this->validateTypes($data)) {
             throw new InvalidArgumentException(
-                'Data must be of type: ' . $this->dataType->value . ', ' . gettype($data) . ' given.'
+		    'Data must be of type: ' .
+		    $this->dataType->value . ($this->dataClass !== null ? '::' . $this->dataClass : '') .
+		    ', ' .
+		    gettype($data) . ($this->dataClass !== null ? '::' . $this->dataClass : '') .
+		    ' given.'
             );
         }
 
@@ -131,7 +135,11 @@ class Collection implements Abstraction\CollectionInterface
 
         if (!$this->validateTypes($data)) {
             throw new InvalidArgumentException(
-                'Data must be of type: ' . $this->dataType->value . ', ' . gettype($data) . ' given.'
+		    'Data must be of type: ' .
+		    $this->dataType->value . ($this->dataClass !== null ? '::' . $this->dataClass : '') .
+		    ', ' .
+		    gettype($data) . ($this->dataClass !== null ? '::' . $this->dataClass : '') .
+		    ' given.'
             );
         }
 
